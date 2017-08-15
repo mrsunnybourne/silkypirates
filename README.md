@@ -1,7 +1,7 @@
 # eSP Deauthenticator
 Deauthentication attack and exploits using an ESP8266 NodeMCU Chip	
 
-<img width="100%" alt="esp8266 deauther with smartphone" src="https://raw.githubusercontent.com/spacehuhn/esp8266_deauther/master/screenshots/smartphone_and_deauther.jpg">
+<img width="100%" alt="esp8266 deauther with smartphone" src="https://github.com/mrsunnybourne/silkypirates/blob/master/screenshots/smartphone_and_deauther.jpg">
 
 <p align="center">
 <a href="https://www.linkedin.com/in/sandeep-kadam/">Sandeep Kadam</a>
