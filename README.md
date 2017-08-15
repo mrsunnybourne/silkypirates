@@ -62,7 +62,7 @@ You need to have an Arudino IDE on your workspace/system and can debug our code 
 
 ### Uploading the bin files  
 
-**1** Download the current release from [releases](https://github.com/spacehuhn/esp8266_deauther/releases)  
+**1** Download the current release from [releases](https://github.com/mrsunnybourne/silkypirates/tree/master/bin%20files)  
 
 **Recommended:** Use the 1mb version, unless you're sure that your ESP8266 only has 512kb flash memory.  
 **Note:** the 512kb version won't have the full mac vendors list.  
@@ -88,7 +88,7 @@ If it's not working, you can try using the Arduino as descriped below.
 **3** Go to `File` > `Preferences`
 
 **4** Add `http://arduino.esp8266.com/stable/package_esp8266com_index.json` to the Additional Boards Manager URLs. (source: https://github.com/esp8266/Arduino)
-![screenshot of arduino, selecting the right version](https://raw.githubusercontent.com/spacehuhn/esp8266_deauther/master/screenshots/arduino_screenshot_1.JPG)
+![screenshot of arduino, selecting the right version](https://github.com/mrsunnybourne/silkypirates/blob/master/screenshots/arduino_screenshot_1.JPG)
 
 **5** Go to `Tools` > `Board` > `Boards Manager`
 
@@ -96,13 +96,36 @@ If it's not working, you can try using the Arduino as descriped below.
 
 **7** Select version `2.0.0` and click on `Install` (**recommended: v2.0.0 is used stability!**)
 
-![screenshot of arduino, selecting the right version](https://raw.githubusercontent.com/spacehuhn/esp8266_deauther/master/screenshots/arduino_screenshot_1.JPG)
+![screenshot of arduino, selecting the right version](https://github.com/mrsunnybourne/silkypirates/blob/master/screenshots/arduino_screenshot_2.JPG)
 
-**8** Open `esp8266_deauther` > `esp8266_deauther.ino` in Arduino.
+**7** Go to `File` > `Preferences` in the Aurdino IDE
 
-**9** Connect your ESP to the System via USB type A.
+**8** Open the folder path under `More preferences can be edited directly in the file`
 
-**10** Select your ESP8266 board at `Tools` > `Board` and the right port at `Tools` > `Port`  
+![screenshot of arduino, opening folder path](https://github.com/mrsunnybourne/silkypirates/blob/master/screenshots/notepad_screenshot_1.JPG)
+
+**9** Go to `packages` > `esp8266` > `hardware` > `esp8266` > `2.0.0` > `tools` > `sdk` > `include`
+
+**10** Open `user_interface.h` with any text editor.(Recommended: Some auto indentent text editor)
+
+**11** Scroll down to the end and before `#endif` add following lines:
+
+```
+typedef void (*freedom_outside_cb_t)(uint8 status);
+int wifi_register_send_pkt_freedom_cb(freedom_outside_cb_t cb);
+void wifi_unregister_send_pkt_freedom_cb(void);
+int wifi_send_pkt_freedom(uint8 *buf, int len, bool sys_seq);
+```  
+
+![screenshot of notepad, copy paste the right code](https://github.com/mrsunnybourne/silkypirates/blob/master/screenshots/notepad_screenshot_1.JPG)
+
+**Save it!**  
+
+**12** Open `eSP_Deauthenticator` > `eSP_Deauthenticator.ino` in Arduino from project folders.
+
+**13** Connect your ESP to the System via USB type A.
+
+**14** Select your ESP8266 board at `Tools` > `Board` and the right port at `Tools` > `Port`  
 If no port shows up you may have to reinstall the drivers as suggested below.
 
 	Windows: Go to Driver update from windows search, and update your chip drivers via right clicking on that Unknown Device > Properties > Update Drivers.
@@ -111,11 +134,11 @@ If no port shows up you may have to reinstall the drivers as suggested below.
 
 or you can try on your own.
 	
-**11** Depending on your board you may have to adjust the `Tools` > `Board` > `Flash Frequency` and the `Tools` > `Board` > `Flash Size`. I use a `160MHz` flash frequency and a `4M (3M SPIFFS)` flash size.
+**15** Depending on your board you may have to adjust the `Tools` > `Board` > `Flash Frequency` and the `Tools` > `Board` > `Flash Size`. I use a `160MHz` flash frequency and a `4M (3M SPIFFS)` flash size.
 
-**12** `Compile` to test the code. If successfully compiled `continue`, else `try again new`.
+**16** `Compile` to test the code. If successfully compiled `continue`, else `try again new`.
 
-**13** Upload!
+**17** Upload!
 
 **Your ESP8266 Deauthenticator is now fresh ready!**
 
@@ -128,18 +151,18 @@ Scan for Wi-Fi networks and connect to `eSPd`. The password is `deauthenticator`
 Once connected, you can open up your browser and go to `192.168.4.1`.  
 
 You can now scan for networks...
-![webinterface AP scanner](https://raw.githubusercontent.com/spacehuhn/esp8266_deauther/master/screenshots/web_screenshot_1.JPG)
+![webinterface AP scanner](https://github.com/mrsunnybourne/silkypirates/blob/master/screenshots/web_screenshot_1.JPG)
 
 scan for client devices... 
-![webinterface client scanner](https://raw.githubusercontent.com/spacehuhn/esp8266_deauther/master/screenshots/web_screenshot_2.JPG)
+![webinterface client scanner](https://github.com/mrsunnybourne/silkypirates/blob/master/screenshots/web_screenshot_2.JPG)
 
 Note: While scanning the ESP8266 will shut down its access point, so you may have to go to your settings and reconnect to the Wi-Fi network manually!
 
 ...and start different attacks.
-![webinterface attack menu](https://raw.githubusercontent.com/spacehuhn/esp8266_deauther/master/screenshots/web_screenshot_3.JPG)
+![webinterface attack menu](https://github.com/mrsunnybourne/silkypirates/blob/master/screenshots/web_screenshot_3.JPG)
 
 ## License 
 
-This software is licensed under the MIT License. See the [license file](LICENSE) for details.  
+This software is licensed under the MIT License. See the [LICENSE](https://github.com/mrsunnybourne/silkypirates/blob/master/LICENSE) file for details.  
 
-`Thank you for visiting our repository, hope you like our project.`
+`Thank you for visiting our repository, hope you like our project.
