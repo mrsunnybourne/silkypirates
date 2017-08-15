@@ -26,8 +26,8 @@ Deauthentication attack and exploits using an ESP8266 NodeMCU Chip
 
 ### What it is and how it works
 
-This application allows you to perform a [deauth attack](https://en.wikipedia.org/wiki/Wi-Fi_deauthentication_attack) with an [ESP8266 WiFi Module](https://en.wikipedia.org/wiki/ESP8266) against selected networks.  
-The ESP8266 is a cheap and easy to use Wi-Fi SoC (System-on-a-Chip), programmable with the [Arduino IDE](https://www.arduino.cc/en/Main/Software).  
+Our program allows you to perform a [deauth attack](https://en.wikipedia.org/wiki/Wi-Fi_deauthentication_attack) with an [ESP8266 WiFi Module](https://en.wikipedia.org/wiki/ESP8266) against selected networks.  
+The chip ESP8266 is a cheap and easy to use Wi-Fi SoC, programmable with the [Arduino IDE](https://www.arduino.cc/en/Main/Software).  
 With our code flashed onto it, you can select a target network and start different deauthentication attacks.
 
 The deauth attack will, if the connection is vulnerable, disconnect the devices from the network. Because the attack is running constantly, the devices will be disconnected again and again. Depending on the network, that can either block a connection or slow it down.  
@@ -36,37 +36,37 @@ Other attacks also have been implemented, such as beacon flooding and probe requ
 
 The deauth attack works by exploiting an old and known vulnerability in the 802.11 Wi-Fi protocol.  
 Because these [deauthentication frames](https://mrncciew.com/2014/10/11/802-11-mgmt-deauth-disassociation-frames/), usually used to close a Wi-Fi connection safely, and are unencrypted, it's very easy to spoof them. You only need the mac address of the access point, which you can sniff easily.  
-If you don't want to attack all connected devices, you can also scan for connections and attack them specifictly.  
+If you don't want to attack all connected devices, you can also scan for connections and attack them specificly.  
 
 ### How to protect yourself against it
 
 With [802.11w-2009](https://en.wikipedia.org/wiki/IEEE_802.11w-2009) the Wi-Fi protocol became encrypted management (and deauthentication) frames. This makes spoofing these packets way harder and the attack, in this form, ineffective.
-So make sure your router is up to date and has management frame protection enabled. Your client device (e.g your Smartphone, Laptop etc.) needs to support that too. Both ends of the connection need to use it!
+So make sure your router is up to date and has management frame protection enabled. Your client device (E.g: Your Smartphone, Laptop etc.) needs to support that too. Both ends of the connection need to use/have it!
 
 The problem with that is, most routers use unencrypted management frames by default, and don't provide any option to change that and don't provide any information about this issue.  
 We tested few networks(due to time) and couldn't find any one that wasn't vulnerable!  
 
 ## Disclaimer
 
-**This project is a proof of concept for testing and educational purpose only.**  
-Neither the ESP8266, nor its SDK was meant or build for illegal purposes.  
-Bugs can occur for some people!
+**This project is a proof of concept for testing on WiFi and educational purpose only.**  
+Neither the ESP8266, nor its SDK was meant or build for illegal purposes and tells you to do not attempt those.  
+Bugs can occur for [some](https://softwareengineering.stackexchange.com/questions/104900/it-was-working-yesterday-i-swear-what-can-you-do) people!
   
 ## Installation
 
 **You have 2 ways here:**
 
-**1** Uploading the .bin files is easier, but not as good for debugging.  
+**1** Uploading the `.bin` files is easier, but not as good for debugging.  
 **2** You need to have an Arudino IDE on your workspace/system and can debug our code from it.
 
 **YOU ONLY NEED TO DO ONE OF THE INSTALLATION METHODS!**  
 
 ### Uploading the bin files  
 
-**1** Download the current release from [releases](https://github.com/mrsunnybourne/silkypirates/tree/master/bin%20files)  
+**1** Download the current release from [here](https://github.com/mrsunnybourne/silkypirates/tree/master/bin%20files)  
 
 **Recommended:** Use the 1mb version, unless you're sure that your ESP8266 only has 512kb flash memory.  
-**Note:** the 512kb version won't have the full mac vendors list.  
+**Note:** The 512kb version won't have the full mac vendors list.  
 
 **2** Upload using the ESP8266 flash tool of your choice:  
 	- [nodemcu-flasher](https://github.com/nodemcu/nodemcu-flasher) [Windows only]  
@@ -76,9 +76,9 @@ Bugs can occur for some people!
 
 Make sure your settings are correct for your board. Most boards come with 4mb flash and sometimes you have to hold the flash button down while plugging it in and hold it until the flashing process started.  
 
-Also make sure you select the right com-port, the right upload size (mostly 4mb) and the correct .bin file.  
+Also make sure you select the right com-port, the right upload size (mostly 4mb) and the correct `.bin` file.  
 
-If it's not working, you can try using the Arduino as descriped below.
+If it's not working, you can try using the Arduino IDE as descriped below.
 
 ### Compiling the source with Arduino IDE
 
@@ -95,7 +95,7 @@ If it's not working, you can try using the Arduino as descriped below.
 
 **6** Type `esp8266`
 
-**7** Select version `2.0.0` and click on `Install` (**recommended: v2.0.0 is used stability!**)
+**7** Select version `2.0.0` and click on `Install` (**Recommended: v2.0.0 is used stability!**)
 
 ![screenshot of arduino, selecting the right version](https://github.com/mrsunnybourne/silkypirates/blob/master/screenshots/arduino_screenshot_1.JPG)
 
@@ -107,7 +107,7 @@ If it's not working, you can try using the Arduino as descriped below.
 
 **10** Go to `packages` > `esp8266` > `hardware` > `esp8266` > `2.0.0` > `tools` > `sdk` > `include`
 
-**11** Open `user_interface.h` with any text editor.(Recommended: Some auto indentent text editor)
+**11** Open `user_interface.h` with any text editor.(**Recommended: Some auto indentent text editor**)
 
 **12** Scroll down to the end and before `#endif` add following lines:
 
@@ -133,15 +133,15 @@ If no port shows up you may have to reinstall the drivers as suggested below.
 	
 	Linux: (Tux mostly will not have problems)Under System Settings, double-click Additional Drivers. You'll then see that proprietary drivers are not in use. Click Activate to activate the driver and then, when prompted, enter your password and click Authenticate. Wait for the drivers to download and install. Then, click Close once the changes have been applied.
 
-or you can try on your own.
+or ask Google.
 	
-**16** Depending on your board you may have to adjust the `Tools` > `Board` > `Flash Frequency` and the `Tools` > `Board` > `Flash Size`. I use a `160MHz` flash frequency and a `4M (3M SPIFFS)` flash size.
+**16** Depending on your board you may have to adjust the `Tools` > `Board` > `Flash Frequency` and the `Tools` > `Board` > `Flash Size`. We have used a `160MHz` flash frequency and a `4M (3M SPIFFS)` flash size.
 
-**17** `Compile` to test the code. If successfully compiled `continue`, else `try again new`.
+**17** `Compile` to test the code. If successfully compiled `continue`, else `try again`.
 
 **18** Upload!
 
-**Your ESP8266 Deauthenticator is now fresh ready!**
+**Your ESP8266 Deauthenticator is now fresh ready! Now it's time for some Deauth attacks.**
 
 ## How to use it
 
@@ -149,17 +149,20 @@ First start your ESP8266 by plugging it in any power source.
 
 Scan for Wi-Fi networks and connect to `eSPd`. The password is `deauthenticator`.  
 
-Once connected, you can open up your browser and go to `192.168.4.1`.  
+Once connected, you can open up your favorite browser and go to `192.168.4.1`.  
 
 You can now scan for networks...
+
 ![webinterface AP scanner](https://github.com/mrsunnybourne/silkypirates/blob/master/screenshots/web_screenshot_1.JPG)
 
 scan for client devices... 
+
 ![webinterface client scanner](https://github.com/mrsunnybourne/silkypirates/blob/master/screenshots/web_screenshot_2.JPG)
 
 Note: While scanning the ESP8266 will shut down its access point, so you may have to go to your settings and reconnect to the Wi-Fi network manually!
 
 ...and start different attacks.
+
 ![webinterface attack menu](https://github.com/mrsunnybourne/silkypirates/blob/master/screenshots/web_screenshot_3.JPG)
 
 ## License 
