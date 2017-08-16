@@ -5,7 +5,7 @@ Deauthentication attack and exploits using an ESP8266 NodeMCU Chip
 
 <p align="center">
 <a href="https://www.linkedin.com/in/sandeep-kadam/">Sandeep Kadam</a>
-| <a href="https://www.facebook.com/yogesh.sravan?ref=br_rs">Yogesh Sathuluri</a>
+| <a href="https://www.linkedin.com/in/yogesh-sravan-8395b9145/">Yogesh Sathuluri</a>
 | <a href="https://www.facebook.com/saisuryanarayanaraju.saripella">Suryanarayana Saripella</a><br/>
 <br />
 </p>
